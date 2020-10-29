@@ -3,13 +3,13 @@ import products from '../products'
 import Product from './Product'
 
 const Shop = (props) => {
-    //const {  } = props;
+    const { addToCart, } = props;
     return (
         <div>
             {products.map((x) => {
                 return (
                     <div key={x.id}>
-                        <Product name={x.name} price={x.price} id={x.id} />
+                        <Product addToCart={addToCart} name={x.name} price={x.price} id={x.id} />
                     </div>
                 )
             })}

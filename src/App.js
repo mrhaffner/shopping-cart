@@ -14,13 +14,32 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const App = () => {
   const [cart, setCart] = useState([])
 
+  const addToCart = (id, quantity) => {
+    setCart((prevState) => ([
+      ...prevState,
+      {
+        id,
+        quantity,
+      }
+    ]))
+    console.log(cart)
+  }
+
+  const getNumItems = () => {
+    let total = 0
+    cart.forEach((x) => 
+      total += +x.quantity
+    )
+    return total;
+  }
+
   return (
     <Router>
       <div>
-          <Navbar />
+          <Navbar getNumItems={getNumItems} />
           <Switch>
               <Route path="/shop">
-                  <Shop />
+                  <Shop addToCart={addToCart} />
               </Route>
               <Route path="/cart">
                   <Cart />
