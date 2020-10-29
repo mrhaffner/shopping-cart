@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
+import products from './products'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //state has a cart with all the items in it
@@ -12,7 +13,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //products need a default quantity of one
 const App = () => {
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
 
   const addToCart = (id, quantity) => {
     setCart((prevState) => ([
@@ -23,14 +24,23 @@ const App = () => {
       }
     ]))
     console.log(cart)
-  }
+  };
 
   const getNumItems = () => {
-    let total = 0
+    let total = 0;
     cart.forEach((x) => 
       total += +x.quantity
-    )
+    );
     return total;
+  };
+
+  const getPriceTotal = () => {
+    let priceTotal = 0;
+    cart.forEach((x) => {
+      let price = products.filter((y) => x.id === y.id)[0].price
+      priceTotal += +x.quantity * +price
+    })
+    return priceTotal;
   }
 
   return (
@@ -42,7 +52,7 @@ const App = () => {
                   <Shop addToCart={addToCart} />
               </Route>
               <Route path="/cart">
-                  <Cart />
+                  <Cart getPriceTotal={getPriceTotal} />
               </Route>
               <Route path="/">
                   <Home />

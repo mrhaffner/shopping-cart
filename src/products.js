@@ -1,23 +1,23 @@
 const products = [
     {
-        id: 1,
+        id: '1',
         name: "Item 1",
-        price: 1.11
+        price: 1
     },
     {
-        id: 2,
+        id: '2',
         name: "Item 2",
-        price: 2.22
+        price: 2
     },
     {
-        id: 3,
+        id: '3',
         name: "Item 3",
-        price: 3.33
+        price: 3
     },
     {
-        id: 4,
+        id: '4',
         name: "Item 4",
-        price: 4.44
+        price: 4
     },
 ];
 
