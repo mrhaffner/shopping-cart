@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
-    const { getNumItems } = props;
+    const { numItems } = props;
     return (
         <nav>
             <ul>
@@ -13,7 +13,7 @@ const Navbar = (props) => {
                     <Link to="/shop">Shop</Link>
                 </li>
                 <li>
-                    <Link to="/cart">Cart Total: {getNumItems()}</Link>
+                    <Link to="/cart">Cart Total: {numItems}</Link>
                 </li>
             </ul>
         </nav>

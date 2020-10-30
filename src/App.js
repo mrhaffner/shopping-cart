@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Shop from './components/Shop';
@@ -15,24 +15,47 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const App = () => {
   const [cart, setCart] = useState([]);
 
+  useEffect(() => {
+    setCart(products)
+  }, []);
+
   const addToCart = (id, quantity) => {
-    setCart((prevState) => ([
-      ...prevState,
-      {
-        id,
-        quantity,
-      }
-    ]))
+    let newCart = cart
+    newCart.forEach((x) => {
+      if (x.id === id) x.quantity += +quantity;
+    })
+    setCart(newCart)
     console.log(cart)
+    updateNumItems()
+
   };
 
-  const getNumItems = () => {
+  // const addToCart = (id, quantity) => {
+  //   setCart((prevState) => ([
+  //     ...prevState,
+  //     {
+  //       id,
+  //       quantity,
+  //     }
+  //   ]))
+  //   console.log(cart)
+  // };
+  const [numItems, setNumItems] = useState(0)
+  const updateNumItems = () => {
     let total = 0;
     cart.forEach((x) => 
       total += +x.quantity
     );
-    return total;
-  };
+    setNumItems(total)
+  }
+
+  // const getNumItems = () => {
+  //   let total = 0;
+  //   cart.forEach((x) => 
+  //     total += +x.quantity
+  //   );
+  //   return total;
+  // };
 
   const getPriceTotal = () => {
     let priceTotal = 0;
@@ -46,7 +69,7 @@ const App = () => {
   return (
     <Router>
       <div>
-          <Navbar getNumItems={getNumItems} />
+          <Navbar numItems={numItems} />
           <Switch>
               <Route path="/shop">
                   <Shop addToCart={addToCart} />
