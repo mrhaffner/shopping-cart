@@ -11,9 +11,6 @@ const Product = (props) => {
     
     const submitItem = (e) => {
         e.preventDefault();
-        // console.log(input);
-        // console.log(e.target.name)
-        //needs to pass name/id and input to a function which adds it to cart
         addToCart(e.target.name, input);
         setInput('1');
     }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CartItem from './CartItem'
 
 const Cart = (props) => {
-
+    const { updateNumItems } = props;
     const [priceTotal, setPriceTotal] = useState(0)
 
     const getPriceTotal = () => {
@@ -15,6 +15,7 @@ const Cart = (props) => {
 
     useEffect(() => {
         getPriceTotal()
+        updateNumItems()
       });
 
     const {  cart, setCart, } = props;
@@ -25,7 +26,7 @@ const Cart = (props) => {
                 if (x.quantity > 0) {
                     return (
                         <div key={x.id}>
-                            <CartItem name={x.name} price={x.price} id={x.id} quantity={x.quantity} cart={cart} setCart={setCart} getPriceTotal={getPriceTotal} />
+                            <CartItem name={x.name} price={x.price} id={x.id} quantity={x.quantity} cart={cart} setCart={setCart} getPriceTotal={getPriceTotal}  />
                         </div>
                     )
                 } else { return null }
