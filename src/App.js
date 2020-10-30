@@ -58,14 +58,14 @@ const App = () => {
   //   return total;
   // };
 
-  const getPriceTotal = () => {
-    let priceTotal = 0;
-    cart.forEach((x) => {
-      let price = products.filter((y) => x.id === y.id)[0].price
-      priceTotal += +x.quantity * +price
-    })
-    return priceTotal;
-  }
+  // const getPriceTotal = () => {
+  //   let priceTotal = 0;
+  //   cart.forEach((x) => {
+  //     let price = products.filter((y) => x.id === y.id)[0].price
+  //     priceTotal += +x.quantity * +price
+  //   })
+  //   return priceTotal;
+  // }
 
   return (
     <Router>
@@ -76,7 +76,7 @@ const App = () => {
                   <Shop addToCart={addToCart} cart={cart} />
               </Route>
               <Route path="/cart">
-                  <Cart getPriceTotal={getPriceTotal} cart={cart} />
+                  <Cart  cart={cart} setCart={setCart} />
               </Route>
               <Route path="/">
                   <Home />
