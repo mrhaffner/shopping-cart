@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const CartItem = (props) => {
-    // const { name, price, id, addToCart, } = props
+    const { name, price, id, addToCart, } = props
 
     // const[input, setInput] = useState('1')
 
@@ -19,9 +19,9 @@ const CartItem = (props) => {
     // }
     return (
         <div>
-            {/* <p>{name}</p>
+            <p>{name}</p>
             <p>${price}</p>
-
+            {/*
             <form onSubmit={submitItem} name={id}>
                 <label htmlFor="">Quantity</label><br/>
                 <input type="number" min="1" value={input} onChange={handleInputChange} /><br/> 

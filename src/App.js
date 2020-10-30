@@ -40,6 +40,7 @@ const App = () => {
   //   ]))
   //   console.log(cart)
   // };
+
   const [numItems, setNumItems] = useState(0)
   const updateNumItems = () => {
     let total = 0;
@@ -72,10 +73,10 @@ const App = () => {
           <Navbar numItems={numItems} />
           <Switch>
               <Route path="/shop">
-                  <Shop addToCart={addToCart} />
+                  <Shop addToCart={addToCart} cart={cart} />
               </Route>
               <Route path="/cart">
-                  <Cart getPriceTotal={getPriceTotal} />
+                  <Cart getPriceTotal={getPriceTotal} cart={cart} />
               </Route>
               <Route path="/">
                   <Home />
