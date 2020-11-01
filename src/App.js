@@ -14,11 +14,14 @@ const App = () => {
   }, []);
 
   const addToCart = (id, quantity) => {
-    let newCart = cart
-    newCart.forEach((x) => {
+    // let newCart = [...cart]
+    // newCart.forEach((x) => {
+    //   if (x.id === id) x.quantity += +quantity;
+    // });
+    setCart(cart.map((x) => {
       if (x.id === id) x.quantity += +quantity;
-    })
-    setCart(newCart)
+      return x
+    }))
     updateNumItems()
   };
 

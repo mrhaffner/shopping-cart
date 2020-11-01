@@ -4,32 +4,26 @@ const CartItem = (props) => {
     const { name, price, id, quantity, cart, setCart, getPriceTotal } = props
 
     const plus = (e) => {
-        let newCart = cart
-        console.log(newCart)
-        newCart.forEach((x) => {
+        setCart(cart.map((x) => {
             if (+x.id === +e.target.name) x.quantity += 1;
-        })
-        
-        console.log(e.target.name)
-        setCart(newCart)
+            return x;
+        }))
         getPriceTotal()
     }
 
     const minus = (e) => {
-        let newCart = cart
-        newCart.forEach((x) => {
-            if (+x.id === +e.target.name ) x.quantity -= 1;
-        })
-        setCart(newCart)
+        setCart(cart.map((x) => {
+            if (+x.id === +e.target.name) x.quantity -= 1;
+            return x;
+        }))
         getPriceTotal()
     }
 
     const removeItem = (e) => {
-        let newCart = cart
-        newCart.forEach((x) => {
-            if (+x.id === +e.target.name ) x.quantity = 0;
-        })
-        setCart(newCart)
+        setCart(cart.map((x) => {
+            if (+x.id === +e.target.name) x.quantity = 0;
+            return x;
+        }))
         getPriceTotal()
     }
 

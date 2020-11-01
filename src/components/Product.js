@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Product = (props) => {
-    const { name, price, id, addToCart, } = props
+    const { name, price, id, addToCart } = props
 
     const[input, setInput] = useState('1')
 
